@@ -114,6 +114,8 @@ enum input_result take_turn(struct player * current,
 
 		if (count) {
 			printf("%s\n", "This is a valid move");
+			printf("Column %s\nRow %s", selection, count);
+
 			board[count][selection] = current->thiscolor;
 		} else {
 			printf("%s\n", "This isnt a valid move! Try again m8..");
