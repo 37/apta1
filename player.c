@@ -107,8 +107,8 @@ enum input_result take_turn(struct player * current,
 		printf("You selected: %d\n", selection);
 
 		for (col = 0; col < 6; col++){
-			if (board[col][selection] = C_EMPTY) {
-				count += 1;
+			if (board[col][selection] == C_EMPTY) {
+				count = count + 1;
 			}
 		}
 
