@@ -81,6 +81,7 @@ enum input_result take_turn(struct player * current,
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 {
 	if (current->type == HUMAN){
+
 		char input[3];
 		char *end;
 		int selection;
@@ -88,42 +89,46 @@ enum input_result take_turn(struct player * current,
 		int count = -1;
 		int col;
 
-		printf("%s\n", "It's your turn! \nPick a column from 1 to 7:");
+		/* Collect line input details from user */
+		do {
+			/* Ensure valid selection*/
+			do {
+				printf("%s\n", "Pick a column from 1 to 7:");
 
-		/* Get user selection & clear line*/
-		fgets(input, 3 , stdin);
+				/* Get user selection & clear line*/
+				fgets(input, 3 , stdin);
 
-		/* Format and fix newline chars */
-		iLength = strlen(input) - 1;
-		if (input[iLength] == '\n'){
-			input[iLength] = '\0';
-		}
+				/* Format and fix newline chars */
+				iLength = strlen(input) - 1;
+				if (input[iLength] == '\n'){
+					input[iLength] = '\0';
+				}
 
-		/* Convert read input string to int */
-		selection = (int) strtol(input, &end, 10);
+				/* Convert read input string to int */
+				selection = (int) strtol(input, &end, 10);
 
-		/* Log to console user selection and change board */
+				/* Log to console user selection and change board */
 
-		printf("You selected: %d\n", selection);
+				printf("You selected: %d\n", selection);
 
-		for (col = 0; col < 6; col++){
-			if (board[col][selection] == C_EMPTY) {
-				count = count + 1;
-			}
-		}
+			} while ( 0 < selection < 8 );
 
-		if (count) {
-			printf("%s\n", "This is a valid move");
-			printf("Column %d\n", selection);
-			printf("Row %d\n", count);
-			printf("this color:  %d\n", current->thiscolor);
 
-			board[count][selection] = current->thiscolor;
-		} else {
-			printf("%s\n", "This isnt a valid move! Try again m8..");
-			/* use this entire thing in do while. */
-		}
+    		for (col = 0; col < 6; col++){
+    			if (board[col][selection] == C_EMPTY) {
+    				count = count + 1;
+    			}
+    		}
 
+	   } while(count < 0);
+
+	   /* Valid move selected */
+	   printf("%s\n", "This is a valid move");
+	   printf("Column %d\n", selection);
+	   printf("Row %d\n", count);
+	   printf("this color:  %d\n", current->thiscolor);
+
+	   board[count][selection] = current->thiscolor;
 
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
