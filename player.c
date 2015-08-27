@@ -85,7 +85,7 @@ enum input_result take_turn(struct player * current,
 		char *end;
 		int selection;
 		int iLength;
-		int count = 0;
+		int count = -1;
 		int col;
 
 		printf("%s\n", "It's your turn! \nPick a column from 1 to 7:");
@@ -107,8 +107,8 @@ enum input_result take_turn(struct player * current,
 		printf("You selected: %d\n", selection);
 
 		for (col = 0; col < 6; col++){
-			if (board[col][selection] = C_EMPTY) {
-				count += 1;
+			if (board[col][selection] == C_EMPTY) {
+				count = count + 1;
 			}
 		}
 
