@@ -111,7 +111,7 @@ enum input_result take_turn(struct player * current,
 
 				printf("You selected: %d\n", selection);
 
-			} while ( 0 < selection < 8 );
+			} while ( (0 < selection) && (selection < 8) );
 
 
     		for (col = 0; col < 6; col++){
