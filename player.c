@@ -32,7 +32,7 @@ enum input_result get_human_player(struct player* human)
 
 	/* construct player */
 	strcpy(human->name, userName);
-	human->thiscolor = C_RED;
+	human->thiscolor = C_WHITE;
 	human->counters = 0;
 	human->type = HUMAN;
 
@@ -49,7 +49,7 @@ enum input_result get_computer_player(struct player * computer)
 	char compName[NAMELEN] = "computer\o";
     /* initialise all variables that are part of the struct to sensible
      * values */
-	computer->thiscolor = C_WHITE;
+	computer->thiscolor = C_RED;
 	strcpy(computer->name, compName);
 	computer->counters = 0;
 	computer->type = COMPUTER;
@@ -123,6 +123,7 @@ enum input_result take_turn(struct player * current,
 
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
+		printf("%s\n", "It's the computers turn.");
 	}
 
 	/*  call gamestate. */
