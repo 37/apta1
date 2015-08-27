@@ -106,8 +106,8 @@ enum input_result take_turn(struct player * current,
 		printf("You selected: %d\n", selection);
 
 		for (col = 0; col < BOARDHEIGHT; col++){
-			if (board[BOARDHEIGHT][selection] = C_EMPTY;) {
-				count == col;
+			if (board[BOARDHEIGHT][selection] = C_EMPTY) {
+				count = col;
 			}
 		}
 
@@ -120,7 +120,7 @@ enum input_result take_turn(struct player * current,
 		}
 
 
-	} else if (current-type == COMPUTER){
+	} else if (current->type == COMPUTER){
 		/* generate random number.*/
 	}
 
