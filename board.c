@@ -45,7 +45,7 @@ void display_board(enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 
 	/* print board headers */
 	printf("%s\n\n%s\n%s\n%s\n",
-		"---------------------------------------"
+		"---------------------------------------",
 		"This is the current state of the board:",
 		" 1 | 2 | 3 | 4 | 5 | 6 | 7 |",
 		"----------------------------"
