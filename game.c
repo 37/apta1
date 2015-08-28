@@ -87,18 +87,22 @@ struct player * play_game(struct player * human ,
 
     /* turn loop */
     do {
-        if (turn = 0){ /* White turn */
+        if (turn == 0){ /* White turn */
             if (human->thiscolor == C_WHITE){
         		take_turn(human, board);
         	} else {
         		take_turn(computer, board);
         	}
-        } else if (turn = 1) { /* red turn */
+            /* stap turns */
+            turn = 1;
+        } else if (turn == 1) { /* red turn */
             if (human->thiscolor == C_RED){
         		take_turn(human, board);
         	} else {
         		take_turn(computer, board);
         	}
+            /* stap turns */
+            turn = 0;
         }
 
         game = test_for_winner(board);
