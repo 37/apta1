@@ -61,7 +61,7 @@ enum cell_contents
 /**
  * the code used to print a white token
  **/
-#define WHITE_TOKEN "\x1b[1;37mO\x1b[1;0m"
+#define WHITE_TOKEN "o"
 
 /**
  * forward declaration of player struct so that we can refer to it in this
