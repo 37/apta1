@@ -133,7 +133,7 @@ enum game_state test_for_winner(
         rowhistory = 0;
         for (col = 0; ((col < BOARDWIDTH) && (rowcount < 4)); col++) {
 
-            if (board[row][col] = C_RED) {
+            if (board[row][col] == C_RED) {
                 /*current cell is red */
                 /* reset white counter */
                 if (rowhistory == C_WHITE){
@@ -141,7 +141,7 @@ enum game_state test_for_winner(
                 } else {
                     rowcount += 1;
                 }
-            } else if (board[row][col] = C_WHITE) {
+            } else if (board[row][col] == C_WHITE) {
                 /* current cell is white */
                 /* reset red counter */
                 if (rowhistory == C_RED){
@@ -149,7 +149,7 @@ enum game_state test_for_winner(
                 } else {
                     rowcount += 1;
                 }
-            } else if (board[row][col] = C_EMPTY){
+            } else if (board[row][col] == C_EMPTY){
                 rowcount = 0;
                 emptycount += 1;
             }
@@ -175,7 +175,7 @@ enum game_state test_for_winner(
 
         for (row = 0; ((row < BOARDHEIGHT) && (colcount < 4)); row++) {
 
-            if (board[row][col] = C_RED) {
+            if (board[row][col] == C_RED) {
                 /*current cell is red */
                 /* reset white counter */
                 if (colhistory == C_WHITE){
@@ -183,7 +183,7 @@ enum game_state test_for_winner(
                 } else {
                     colcount += 1;
                 }
-            } else if (board[row][col] = C_WHITE) {
+            } else if (board[row][col] == C_WHITE) {
                 /* current cell is white */
                 /* reset red counter */
                 if (colhistory == C_RED){
@@ -191,7 +191,7 @@ enum game_state test_for_winner(
                 } else {
                     colcount += 1;
                 }
-            } else if (board[row][col] = C_EMPTY) {
+            } else if (board[row][col] == C_EMPTY) {
                 colcount = 0;
                 emptycount += 1;
             }

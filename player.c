@@ -109,7 +109,6 @@ enum input_result take_turn(struct player * current,
 
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
-		falsetrue success = FALSE;
 		int count = -1;
 		int row;
 		int col;
