@@ -16,7 +16,7 @@ struct player * play_game(struct player * human ,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH];
     /* If turn is set to 0 white's turn, else 1 for red. */
     int turn = 0;
-    enum game_state game;
+    enum game_state game = G_NO_WINNER;
 	/* calls human player creation */
     get_human_player(human);
 	get_computer_player(computer);
@@ -107,6 +107,11 @@ struct player * play_game(struct player * human ,
                 "It was a draw! Game over."
             );
             display_board(board);
+            return NULL;
+            break;
+
+        case default :
+            printf("Oops, we had a bit of an issue with that. Returning home.");
             return NULL;
             break;
     }
