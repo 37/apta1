@@ -104,7 +104,7 @@ struct player * play_game(struct player * human ,
             /* stap turns */
             turn = 0;
         }
-
+        display_board(board);
         game = test_for_winner(board);
 
     } while (game == G_NO_WINNER);
