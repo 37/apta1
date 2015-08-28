@@ -29,8 +29,7 @@ int main(void)
 
     do {
         /*display menu and get menu choice until the user chooses to quit */
-
-    	printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
+    	printf("\e[1;1H\e[2J\n%s\n%s\n%s\n%s\n%s\n%s\n",
     			"Welcome to Connect 4",
     			"--------------------",
     			"1. Play Game",
