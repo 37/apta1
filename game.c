@@ -184,10 +184,6 @@ enum game_state test_for_winner(
     enum cell_contents rowhistory;
     int rowcount;
 
-
-    int i = 0;
-
-
     /* Iterate through horizontal ROW cell values, recording the counters */
     for (row = 0; row < BOARDHEIGHT; row++) {
         /* New row, reset counters */
