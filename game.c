@@ -174,8 +174,6 @@ enum game_state test_for_winner(
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 {
     int emptycount = 0;
-    int victorHorizontal;
-    int victorVertical;
 
     int row;
     int col;
@@ -187,11 +185,11 @@ enum game_state test_for_winner(
     int rowcount;
 
     /* Iterate through horizontal ROW cell values, recording the counters */
-    for (row = 0; ((row < BOARDHEIGHT) && (rowcount < 4)); row++) {
+    for (row = 0; row < BOARDHEIGHT; row++) {
         /* New row, reset counters */
         rowcount = 0;
         rowhistory = 0;
-        for (col = 0; ((col < BOARDWIDTH) && (rowcount < 4)); col++) {
+        for (col = 0; ((col < BOARDWIDTH)); col++) {
 
             if (board[row][col] == C_RED) {
                 /*current cell is red */
@@ -201,7 +199,8 @@ enum game_state test_for_winner(
                 } else if (rowhistory == C_RED){
                     rowcount += 1;
                     if (rowcount > 3) {
-                        victorHorizontal = C_RED;
+                        /* 4 red found in a row */
+                        return G_RED;
                     }
                 }
             } else if (board[row][col] == C_WHITE) {
@@ -212,7 +211,8 @@ enum game_state test_for_winner(
                 } else if (rowhistory == C_WHITE){
                     rowcount += 1;
                     if (rowcount > 3) {
-                        victorHorizontal = C_WHITE;
+                        /* 4 white found in a row */
+                        return G_WHITE;
                     }
                 }
             } else if (board[row][col] == C_EMPTY){
@@ -222,34 +222,27 @@ enum game_state test_for_winner(
             rowhistory = board[row][col];
         }
 
-        /* if horizontal victory */
-        if (victorHorizontal) {
-            if (victorHorizontal == C_RED) {
-                return G_RED;
-            } else if (victorHorizontal == C_WHITE) {
-                return G_WHITE;
-            }
-        }
     }
 
     /* Iterate through vertical COLUMN cell values, recording the counters */
 
-    for (col = 0; ((col < BOARDWIDTH) && (colcount < 4)); col++) {
+    for (col = 0; col < BOARDWIDTH; col++) {
         /* New row, reset counters */
         colcount = 0;
         colhistory = 0;
 
-        for (row = 0; ((row < BOARDHEIGHT) && (colcount < 4)); row++) {
+        for (row = 0; row < BOARDHEIGHT; row++) {
 
             if (board[row][col] == C_RED) {
                 /*current cell is red */
                 /* reset white counter */
                 if (colhistory == C_WHITE){
                     colcount = 0;
-                } else if (rowhistory == C_RED){
+                } else if (colhistory == C_RED){
                     colcount += 1;
                     if (colcount > 3) {
-                        victorVertical = C_WHITE;
+                        /* 4 red found in a row */
+                        return G_RED;
                     }
                 }
             } else if (board[row][col] == C_WHITE) {
@@ -257,10 +250,11 @@ enum game_state test_for_winner(
                 /* reset red counter */
                 if (colhistory == C_RED){
                     colcount = 0;
-                } else if (rowhistory == C_WHITE){
+                } else if (colhistory == C_WHITE){
                     colcount += 1;
                     if (colcount > 3) {
-                        victorVertical = C_WHITE;
+                        /* 4 white found in a row */
+                        return G_WHITE;
                     }
                 }
             } else if (board[row][col] == C_EMPTY) {
@@ -270,15 +264,6 @@ enum game_state test_for_winner(
             colhistory = board[row][col];
         }
 
-        /* if horizontal victory */
-        if (victorVertical) {
-            if (victorVertical == C_RED) {
-                return G_RED;
-            } else if (victorVertical == C_WHITE) {
-                return G_WHITE;
-            }
-        }
-    }
 
     if (emptycount == 0) {
         return G_DRAW;
