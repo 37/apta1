@@ -117,7 +117,7 @@ enum input_result take_turn(struct player * current,
 
 		/* select random column, test all rows to ensure it's valid */
 		do {
-			col = randomnum(7);
+			col = randomnum(8);
 			printf("The computer has chosen column: %d\n", col);
 			for (row = 0; row < 6; row++){
     			if (board[row][col] == C_EMPTY) {
@@ -125,7 +125,7 @@ enum input_result take_turn(struct player * current,
     			}
     		}
 
-		} while (count > -1);
+		} while (count < 0);
 
 		printf("%s\n", "The computer has made a valid move.");
 		/* Set the computer players action */
