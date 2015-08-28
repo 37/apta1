@@ -131,7 +131,7 @@ struct player * play_game(struct player * human ,
                 "EVENT LOG:",
                 "Red wins! Game over."
             );
-
+            display_board(board);
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_RED){
                 return human;
@@ -147,7 +147,7 @@ struct player * play_game(struct player * human ,
                 "EVENT LOG:",
                 "White wins! Game over."
             );
-
+            display_board(board);
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_WHITE){
                 return human;
