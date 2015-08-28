@@ -26,7 +26,7 @@ void init_scoreboard(scoreboard board) {
 void display_scores(const scoreboard board) {
     /* display score code goes here */
     int count;
-    printf("%s\n%s\n%s\n",
+    printf("\e[1;1H\e[2J%s\n%s\n%s\n",
         "---------------------------------------------",
         "Player               |Score                  ",
         "---------------------------------------------"
