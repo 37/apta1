@@ -66,6 +66,12 @@ enum input_result take_turn(struct player * current,
 		int count = -1;
 		int row;
 
+		/* print game log messages */
+		printf("\e[1;1H\e[2J");
+		printf("---------------------------------------\n");
+		printf("EVENT LOG:\n");
+		printf("%s %s.\n", "It's your turn", current->name);
+
 		/* Collect line input details from user */
 		do {
 			/* Ensure valid selection*/
@@ -85,14 +91,14 @@ enum input_result take_turn(struct player * current,
 				selection = (int) strtol(input, &end, 10);
 
 				/* Log to console user selection and change board */
-				printf("\e[1;1H\e[2J");
+
 				printf("You selected: %d\n", selection);
 
 			} while ( (1 > selection) || (selection > 7) );
 
 
     		for (row = 0; row < 6; row++){
-    			if (board[row][(selection - 1)] == C_EMPTY) {
+    			if (board[row][(selection)] == C_EMPTY) {
     				count = count + 1;
     			}
     		}
@@ -102,7 +108,7 @@ enum input_result take_turn(struct player * current,
 	   /* Valid move selected */
 	   printf("%s\n", "This is a valid move.");
 
-	   board[count][selection] = current->thiscolor;
+	   board[count][(selection - 1)] = current->thiscolor;
 
 
 	} else if (current->type == COMPUTER){
@@ -111,7 +117,7 @@ enum input_result take_turn(struct player * current,
 		int count = -1;
 		int row;
 		int col;
-
+		printf("\e[1;1H\e[2J");
 		printf("---------------------------------------\n");
 		printf("EVENT LOG:\n");
 		printf("%s\n", "It's the computers turn.");
@@ -121,7 +127,6 @@ enum input_result take_turn(struct player * current,
 		/* select random column, test all rows to ensure it's valid */
 		do {
 			col = randomnum(7);
-			printf("\e[1;1H\e[2J");
 			printf("The computer has chosen column: %d\n", col);
 
 			for (row = 0; row < 6; row++){
