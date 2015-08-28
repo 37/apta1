@@ -70,12 +70,13 @@ struct player * play_game(struct player * human ,
     switch(game){
 		/* play a game option */
 		case G_RED :
+            printf("---------------------------------------");
+            display_board(board);
             printf("\e[1;1H\e[2J%s\n%s\n%s\n",
                 "---------------------------------------",
                 "EVENT LOG:",
                 "Red wins! Game over."
             );
-            display_board(board);
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_RED){
                 return human;
@@ -86,12 +87,13 @@ struct player * play_game(struct player * human ,
             break;
 
 		case G_WHITE :
+            printf("---------------------------------------");
+            display_board(board);
             printf("\e[1;1H\e[2J%s\n%s\n%s\n",
                 "---------------------------------------",
                 "EVENT LOG:",
                 "White wins! Game over."
             );
-            display_board(board);
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_WHITE){
                 return human;
@@ -101,12 +103,13 @@ struct player * play_game(struct player * human ,
             break;
 
 		case G_DRAW :
+            printf("---------------------------------------");
+            display_board(board);
             printf("\e[1;1H\e[2J%s\n%s\n%s\n",
                 "---------------------------------------",
                 "EVENT LOG:",
                 "It was a draw! Game over."
             );
-            display_board(board);
             return NULL;
             break;
 
