@@ -56,8 +56,8 @@ enum input_result get_computer_player(struct player * computer)
 }
 
 enum input_result take_turn(struct player * current,
-        enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
-{
+    enum cell_contents board[BOARDHEIGHT][BOARDWIDTH]) {
+
 	if (current->type == HUMAN){
 
 		char input[3];
@@ -105,7 +105,6 @@ enum input_result take_turn(struct player * current,
 
 	   board[count][selection] = current->thiscolor;
 
-	   return SUCCESS;
 
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
@@ -119,7 +118,7 @@ enum input_result take_turn(struct player * current,
 		/* select random column, test all rows to ensure it's valid */
 		do {
 			col = randomnum(7);
-			printf("The computer has chosen column: %s\n", col);
+			printf("The computer has chosen column: %d\n", col);
 			for (row = 0; row < 6; row++){
     			if (board[row][col] == C_EMPTY) {
     				count = count + 1;
@@ -132,8 +131,9 @@ enum input_result take_turn(struct player * current,
 		/* Set the computer players action */
 		board[count][col] = current->thiscolor;
 
-		return SUCCESS;
 	}
+
+	return SUCCESS;
 
 	/* End of turn */
 }
