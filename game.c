@@ -110,7 +110,7 @@ struct player * play_game(struct player * human ,
             return NULL;
             break;
 
-        case default :
+        default :
             printf("Oops, we had a bit of an issue with that. Returning home.");
             return NULL;
             break;
