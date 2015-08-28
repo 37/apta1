@@ -1,6 +1,6 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
+* Semester 2 2015 Assignment #1
 * Full Name        : EDIT HERE
 * Student Number   : EDIT HERE
 * Course Code      : EDIT HERE
@@ -10,7 +10,7 @@
 #ifndef BOOL_H
 #define BOOL_H
 /**
- * @file bool.h defines the BOOLEAN type which contains @ref FALSE as 0 and 
+ * @file bool.h defines the BOOLEAN type which contains @ref FALSE as 0 and
  * @ref TRUE as 1
  **/
 

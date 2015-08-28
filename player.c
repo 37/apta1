@@ -59,6 +59,7 @@ enum input_result take_turn(struct player * current,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH]) {
 
 	if (current->type == HUMAN){
+
 		char input[3];
 		char *end;
 		int selection;
@@ -88,16 +89,16 @@ enum input_result take_turn(struct player * current,
 
 				/* Convert read input string to int */
 				selection = (int) strtol(input, &end, 10);
+				printf("You selected: %d\n", selection);
 
 				/* Log to console user selection and change board */
 
-				printf("You selected: %d\n", selection);
-
 			} while ( (1 > selection) || (selection > 7) );
 
+			selection -= 1;
 
     		for (row = 0; row < 6; row++){
-    			if (board[row][(selection)] == C_EMPTY) {
+    			if (board[row][selection] == C_EMPTY) {
     				count = count + 1;
     			}
     		}
@@ -107,7 +108,7 @@ enum input_result take_turn(struct player * current,
 	   /* Valid move selected */
 	   printf("%s\n", "This is a valid move.");
 
-	   board[count][(selection - 1)] = current->thiscolor;
+	   board[count][selection] = current->thiscolor;
 
 
 	} else if (current->type == COMPUTER){
@@ -116,6 +117,8 @@ enum input_result take_turn(struct player * current,
 		int count = -1;
 		int row;
 		int col;
+
+		/* print game log history */
 		printf("\e[1;1H\e[2J");
 		printf("---------------------------------------\n");
 		printf("EVENT LOG:\n");

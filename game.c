@@ -84,7 +84,6 @@ struct player * play_game(struct player * human ,
 
 	initialise_board(board);
 	display_board(board);
-    printf("color white is: \x1b[1;37mO\x1b[1;0m");
 
     /* turn loop */
     do {
@@ -105,7 +104,6 @@ struct player * play_game(struct player * human ,
             /* stap turns */
             turn = 0;
         }
-        printf("\e[1;1H\e[2J");
         display_board(board);
         game = test_for_winner(board);
 
