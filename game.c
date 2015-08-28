@@ -112,15 +112,30 @@ struct player * play_game(struct player * human ,
     switch(game){
 		/* play a game option */
 		case G_RED :
-            printf("%s\n", "Red wins! Game over.");
+            printf("\e[1;1H\e[2J%s\n%s\n%s\n",
+                "---------------------------------------",
+                "EVENT LOG:",
+                "Red wins! Game over."
+            );
+            display_board(board);
             break;
 
 		case G_WHITE :
-            printf("%s\n", "White wins! Game over.");
+            printf("\e[1;1H\e[2J%s\n%s\n%s\n",
+                "---------------------------------------",
+                "EVENT LOG:",
+                "White wins! Game over."
+            );
+            display_board(board);
             break;
 
 		case G_DRAW :
-            printf("%s\n", "It was a draw! Game over.");
+            printf("\e[1;1H\e[2J%s\n%s\n%s\n",
+                "---------------------------------------",
+                "EVENT LOG:",
+                "It was a draw! Game over."
+            );
+            display_board(board);
             break;
     }
 
