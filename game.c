@@ -105,12 +105,27 @@ struct player * play_game(struct player * human ,
             /* stap turns */
             turn = 0;
         }
+        printf("\e[1;1H\e[2J");
         display_board(board);
         game = test_for_winner(board);
 
     } while (game == G_NO_WINNER);
     /* Result achieved, victory or draw */
-    printf("%s\n", "Game over.");
+    switch(game){
+		/* play a game option */
+		case G_RED :
+            printf("%s\n", "Red wins! Game over.");
+            break;
+
+		case G_WHITE :
+            printf("%s\n", "White wins! Game over.");
+            break;
+
+		case G_DRAW :
+            printf("%s\n", "It was a draw! Game over.");
+            break;
+    }
+
     return NULL;
 }
 

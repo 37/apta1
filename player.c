@@ -67,7 +67,6 @@ enum input_result take_turn(struct player * current,
 		int row;
 
 		/* print game log messages */
-		printf("\e[1;1H\e[2J");
 		printf("---------------------------------------\n");
 		printf("EVENT LOG:\n");
 		printf("%s %s.\n", "It's your turn", current->name);
