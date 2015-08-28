@@ -21,69 +21,71 @@ int main(void)
 	char *end;
 	int iLength;
 	int selection;
+    int mode = 1;
+    /* mode setting specifies the current status of the program, outisde of game play:
+     * 1 - active
+     * 0 - exit
+     */
 
+    do {
+        /*display menu and get menu choice until the user chooses to quit */
 
-    /* initialise the scoreboard */
+    	printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
+    			"Welcome to Connect 4",
+    			"--------------------",
+    			"1. Play Game",
+    			"2. Display High Scores",
+    			"3. Quit",
+    			"Please enter your choice:");
 
-	/*display menu and get menu choice until the user chooses to quit */
+    	/* Get user selection & clear line*/
+    	fgets(input, 3 , stdin);
 
+    	/* Format and fix newline chars */
+    	iLength = strlen(input) - 1;
+    	if (input[iLength] == '\n'){
+    		input[iLength] = '\0';
+    	}
 
-	printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
-			"Welcome to Connect 4",
-			"--------------------",
-			"1. Play Game",
-			"2. Display High Scores",
-			"3. Quit",
-			"Please enter your choice:");
+    	/* Convert read input string to int */
+    	selection = (int) strtol(input, &end, 10);
 
-	/* Get user selection & clear line*/
-	fgets(input, 3 , stdin);
+    	/* Log to console user selection */
+    	printf("You selected: %d\n", selection);
 
-	/* Format and fix newline chars */
-	iLength = strlen(input) - 1;
-	if (input[iLength] == '\n'){
-		input[iLength] = '\0';
-	}
+    	/* Process selection and call appropriate methods */
+    	switch(selection){
+    		/* play a game option */
+    		case 1 :
 
-	/* Convert read input string to int */
-	selection = (int) strtol(input, &end, 10);
+    			printf("\e[1;1H\e[2J");
+    			printf(" - %d | play game \n", selection);
 
-	/* Log to console user selection */
-	printf("You selected: %d\n", selection);
+                winner = play_game(&human_player, &computer_player);
+                /* game will return the game result, with player and board */
 
-	/* Process selection and call appropriate methods */
-	switch(selection){
-		/* play a game option */
-		case 1 :
+                if (winner) {
+                    add_to_scoreboard(scores, winner);
+                }
+    			break;
 
-			printf("\e[1;1H\e[2J");
-			printf(" - %d | play game \n", selection);
+    		/* display the scoreboard option */
+    		case 2  :
+    		   display_scores(scores);
+    		   break;
 
-            winner = play_game(&human_player, &computer_player);
-            /* game will return the game result, with player and board */
+    		/* quit the program option */
+    		case 3  :
+                printf("%s\n", "Hope you enjoyed yo game, 'G.");
+                mode = 0;
+                break;
 
-            if (winner) {
-                add_to_scoreboard(scores, winner);
-            }
-
-			break;
-
-		/* display the scoreboard option */
-		case 2  :
-		   display_scores(scores);
-		   break;
-
-		/* quit the program option */
-		case 3  :
-            printf("%s\n", "Hope you enjoyed yo game, 'G.");
-            return EXIT_SUCCESS;
-            break;
-
-		default : /* Optional */
-			/* default code here */
-			printf("%s\n", "you a basic bitch");
-			break;
-	}
+    		default : /* Optional */
+    			/* default code here */
+    			printf("%s\n", "you a basic bitch");
+    			break;
+    	}
+    } while (mode == 1);
 
     return EXIT_SUCCESS;
 }

@@ -174,6 +174,9 @@ enum game_state test_for_winner(
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 {
     int emptycount = 0;
+    int victorHorizontal;
+    int victorVertical;
+
     int row;
     int col;
 
@@ -197,6 +200,9 @@ enum game_state test_for_winner(
                     rowcount = 0;
                 } else {
                     rowcount += 1;
+                    if (rowcount > 3) {
+                        victorHorizontal = C_RED;
+                    }
                 }
             } else if (board[row][col] == C_WHITE) {
                 /* current cell is white */
@@ -205,6 +211,9 @@ enum game_state test_for_winner(
                     rowcount = 0;
                 } else {
                     rowcount += 1;
+                    if (rowcount > 3) {
+                        victorHorizontal = C_WHITE;
+                    }
                 }
             } else if (board[row][col] == C_EMPTY){
                 rowcount = 0;
@@ -214,10 +223,10 @@ enum game_state test_for_winner(
         }
 
         /* if horizontal victory */
-        if (rowcount > 3) {
-            if (rowhistory == C_RED) {
+        if (victorHorizontal) {
+            if (victorHorizontal == C_RED) {
                 return G_RED;
-            } else if (rowhistory == C_WHITE) {
+            } else if (victorHorizontal == C_WHITE) {
                 return G_WHITE;
             }
         }
@@ -239,6 +248,9 @@ enum game_state test_for_winner(
                     colcount = 0;
                 } else {
                     colcount += 1;
+                    if (colcount > 3) {
+                        victorVertical = C_WHITE;
+                    }
                 }
             } else if (board[row][col] == C_WHITE) {
                 /* current cell is white */
@@ -247,6 +259,9 @@ enum game_state test_for_winner(
                     colcount = 0;
                 } else {
                     colcount += 1;
+                    if (colcount > 3) {
+                        victorVertical = C_WHITE;
+                    }
                 }
             } else if (board[row][col] == C_EMPTY) {
                 colcount = 0;
@@ -256,10 +271,10 @@ enum game_state test_for_winner(
         }
 
         /* if horizontal victory */
-        if (colcount > 3) {
-            if (colhistory == C_RED) {
+        if (victorVertical) {
+            if (victorVertical == C_RED) {
                 return G_RED;
-            } else if (colhistory == C_WHITE) {
+            } else if (victorVertical == C_WHITE) {
                 return G_WHITE;
             }
         }
