@@ -131,7 +131,7 @@ struct player * play_game(struct player * human ,
                 "EVENT LOG:",
                 "Red wins! Game over."
             );
-            display_board(board);
+
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_RED){
                 return human;
@@ -147,7 +147,7 @@ struct player * play_game(struct player * human ,
                 "EVENT LOG:",
                 "White wins! Game over."
             );
-            display_board(board);
+
             /* Print board and gamestate to user, return victor details */
             if (human->thiscolor == C_WHITE){
                 return human;
@@ -198,7 +198,7 @@ enum game_state test_for_winner(
                 /* reset white counter */
                 if (rowhistory == C_WHITE){
                     rowcount = 0;
-                } else {
+                } else if (rowhistory == C_RED){
                     rowcount += 1;
                     if (rowcount > 3) {
                         victorHorizontal = C_RED;
@@ -209,7 +209,7 @@ enum game_state test_for_winner(
                 /* reset red counter */
                 if (rowhistory == C_RED){
                     rowcount = 0;
-                } else {
+                } else if (rowhistory == C_WHITE){
                     rowcount += 1;
                     if (rowcount > 3) {
                         victorHorizontal = C_WHITE;
@@ -246,7 +246,7 @@ enum game_state test_for_winner(
                 /* reset white counter */
                 if (colhistory == C_WHITE){
                     colcount = 0;
-                } else {
+                } else if (rowhistory == C_RED){
                     colcount += 1;
                     if (colcount > 3) {
                         victorVertical = C_WHITE;
@@ -257,7 +257,7 @@ enum game_state test_for_winner(
                 /* reset red counter */
                 if (colhistory == C_RED){
                     colcount = 0;
-                } else {
+                } else if (rowhistory == C_WHITE){
                     colcount += 1;
                     if (colcount > 3) {
                         victorVertical = C_WHITE;
