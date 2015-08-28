@@ -44,7 +44,7 @@ enum input_result get_human_player(struct player* human)
  **/
 enum input_result get_computer_player(struct player * computer)
 {
-	char compName[NAMELEN] = "computer\o";
+	char compName[NAMELEN] = "computer\0";
     /* initialise all variables that are part of the struct to sensible
      * values */
 	computer->thiscolor = C_RED;
