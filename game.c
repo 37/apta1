@@ -171,28 +171,7 @@ struct player * play_game(struct player * human ,
             break;
     }
 
-    printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
-			"What do you want to do?",
-			"--------------------",
-			"1. Play again",
-			"2. View High Scores",
-			"3. Quit",
-			"Please enter your choice:");
-
-	/* Get user selection & clear line*/
-	fgets(input, 3 , stdin);
-
-	/* Format and fix newline chars */
-	iLength = strlen(input) - 1;
-	if (input[iLength] == '\n'){
-		input[iLength] = '\0';
-	}
-
-	/* Convert read input string to int */
-	selection = (int) strtol(input, &end, 10);
-
-    /* return choice */
-    return selection;
+    return NULL;
 }
 
 enum game_state test_for_winner(

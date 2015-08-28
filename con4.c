@@ -56,14 +56,15 @@ int main(void)
 		/* play a game option */
 		case 1 :
 
-            int winner;
 			printf("\e[1;1H\e[2J");
 			printf(" - %d | play game \n", selection);
 
             winner = play_game(&human_player, &computer_player);
             /* game will return the game result, with player and board */
 
-            add_to_scoreboard(scores, winner);
+            if (winner) {
+                add_to_scoreboard(scores, winner);
+            }
 
 			break;
 

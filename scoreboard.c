@@ -15,33 +15,14 @@ void init_scoreboard(scoreboard board) {
     /* these values are set to a default state, as type and color aren't important in the initial state
     * they are set as such below.. */
     for (index = 0; index < SCOREBOARDSIZE; index++) {
-        strcpy(board[i].name, "");
-        board[i].type = HUMAN;
-        board[i].counters = 0;
-        board[i].thiscolor = C_EMPTY;
+        strcpy(board[index].name, "");
+        board[index].type = HUMAN;
+        board[index].counters = 0;
+        board[index].thiscolor = C_EMPTY;
     }
 
 }
 
-/** For this requirement, you will need to display the scores in the
- * order they are scored in the scoreboard array.
- *
- * The display should look as follows:
- * Player               |Score
- * ---------------------------------------------
- * Barney               |17
- * Magi                 |15
- * Red                  |10
- * Computer             |8
- * Computer             |7
- * Computer             |6
- * Paul                 |4
- * Fred                 |4
- * Muaddib              |4
- * Zafiqa               |4
- *
- * @param board the scoreboard to display
- **/
 void display_scores(const scoreboard board) {
     /* display score code goes here */
     int count;
