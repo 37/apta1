@@ -74,10 +74,6 @@ struct player * play_game(struct player * human ,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH];
     /* If turn is set to 0 white's turn, else 1 for red. */
     int turn = 0;
-    char input[3];
-    char *end;
-    int iLength;
-    int selection;
     int game;
 	/* calls human player creation */
     get_human_player(human);
