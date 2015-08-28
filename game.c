@@ -84,6 +84,7 @@ struct player * play_game(struct player * human ,
 
 	initialise_board(board);
 	display_board(board);
+    printf("color white is: \x1b[1;37mO\x1b[1;0m");
 
     /* turn loop */
     do {

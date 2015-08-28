@@ -59,7 +59,6 @@ enum input_result take_turn(struct player * current,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH]) {
 
 	if (current->type == HUMAN){
-		printf("Current color is: %d\n", current->thiscolor);
 		char input[3];
 		char *end;
 		int selection;
@@ -93,7 +92,7 @@ enum input_result take_turn(struct player * current,
 
 
     		for (row = 0; row < 6; row++){
-    			if (board[row][selection] == C_EMPTY) {
+    			if (board[row][(selection - 1)] == C_EMPTY) {
     				count = count + 1;
     			}
     		}
@@ -108,21 +107,23 @@ enum input_result take_turn(struct player * current,
 
 	} else if (current->type == COMPUTER){
 
-		printf("Current color is: %d\n", current->thiscolor);
-
 		/* generate random number.*/
 		int count = -1;
 		int row;
 		int col;
 
+		printf("---------------------------------------\n");
+		printf("EVENT LOG:\n");
 		printf("%s\n", "It's the computers turn.");
+
 		/* returns a random number between 1 & 7 */
 
 		/* select random column, test all rows to ensure it's valid */
 		do {
-			col = randomnum(8);
+			col = randomnum(7);
 			printf("\e[1;1H\e[2J");
 			printf("The computer has chosen column: %d\n", col);
+
 			for (row = 0; row < 6; row++){
     			if (board[row][col] == C_EMPTY) {
     				count = count + 1;
