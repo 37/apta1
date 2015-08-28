@@ -17,7 +17,16 @@ enum input_result get_human_player(struct player* human)
 
 	char userName[(NAMELEN + 2)];
 	int uLength;
+	int colorindex = randomnum(2);
+	int humancolor;
+	int compcolor;
 
+	/* 0 is red, 1 is white */
+	if (colorindex == 0){
+		humancolor = C_RED;
+	} else if (colorindex == 1) {
+		humancolor = C_WHITE;
+	}
 
 	printf("%s\n", "What's yo name dawg?");
 
@@ -32,7 +41,7 @@ enum input_result get_human_player(struct player* human)
 
 	/* construct player */
 	strcpy(human->name, userName);
-	human->thiscolor = C_WHITE;
+	human->thiscolor = humancolor;
 	human->counters = 0;
 	human->type = HUMAN;
 
@@ -45,9 +54,10 @@ enum input_result get_human_player(struct player* human)
 enum input_result get_computer_player(struct player * computer)
 {
 	char compName[NAMELEN] = "computer\0";
+
     /* initialise all variables that are part of the struct to sensible
      * values */
-	computer->thiscolor = C_RED;
+	computer->thiscolor = C_EMPTY;
 	strcpy(computer->name, compName);
 	computer->counters = 0;
 	computer->type = COMPUTER;
@@ -107,7 +117,7 @@ enum input_result take_turn(struct player * current,
 
 	   /* Valid move selected */
 	   printf("%s\n", "This is a valid move.");
-
+	   current->counters += 1;
 	   board[count][selection] = current->thiscolor;
 
 
@@ -141,6 +151,7 @@ enum input_result take_turn(struct player * current,
 
 		printf("%s\n", "The computer has made a valid move.");
 		/* Set the computer players action */
+		current->counters += 1;
 		board[count][col] = current->thiscolor;
 
 	}

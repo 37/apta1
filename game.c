@@ -74,10 +74,28 @@ struct player * play_game(struct player * human ,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH];
     /* If turn is set to 0 white's turn, else 1 for red. */
     int turn = 0;
+    char input[3];
+    char *end;
+    int iLength;
+    int selection;
     int game;
 	/* calls human player creation */
     get_human_player(human);
 	get_computer_player(computer);
+
+    /*set computer color based on random human color */
+    if (human->thiscolor == C_RED){
+		computer->thiscolor = C_WHITE;
+	} else if (human->thiscolor == C_WHITE) {
+		computer->thiscolor = C_RED;
+	}
+
+    /*tells the user what color they are*/
+    if (human->thiscolor == C_RED) {
+        printf("%s\n", "You the WHITE player");
+    } else {
+        printf("%s\n", "You are the RED player");
+    }
 
 	/* initialise board and display board  -- see board.c for method */
 	printf("%s\n", "Let's play some connect 4");
@@ -118,6 +136,13 @@ struct player * play_game(struct player * human ,
                 "Red wins! Game over."
             );
             display_board(board);
+            /* Print board and gamestate to user, return victor details */
+            if (human->thiscolor == C_RED){
+                return human;
+            } else {
+                return computer;
+            }
+
             break;
 
 		case G_WHITE :
@@ -127,6 +152,12 @@ struct player * play_game(struct player * human ,
                 "White wins! Game over."
             );
             display_board(board);
+            /* Print board and gamestate to user, return victor details */
+            if (human->thiscolor == C_WHITE){
+                return human;
+            } else {
+                return computer;
+            }
             break;
 
 		case G_DRAW :
@@ -136,10 +167,32 @@ struct player * play_game(struct player * human ,
                 "It was a draw! Game over."
             );
             display_board(board);
+            return NULL;
             break;
     }
 
-    return NULL;
+    printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
+			"What do you want to do?",
+			"--------------------",
+			"1. Play again",
+			"2. View High Scores",
+			"3. Quit",
+			"Please enter your choice:");
+
+	/* Get user selection & clear line*/
+	fgets(input, 3 , stdin);
+
+	/* Format and fix newline chars */
+	iLength = strlen(input) - 1;
+	if (input[iLength] == '\n'){
+		input[iLength] = '\0';
+	}
+
+	/* Convert read input string to int */
+	selection = (int) strtol(input, &end, 10);
+
+    /* return choice */
+    return selection;
 }
 
 enum game_state test_for_winner(

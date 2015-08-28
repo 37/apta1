@@ -13,12 +13,15 @@ int main(void)
 {
     /* the scoreboard for keeping track of winners */
     scoreboard scores;
+    init_scoreboard(scores);
+
     /* the two players and a pointer to who won the last game */
     struct player human_player, computer_player, *winner;
 	char input[3];
 	char *end;
 	int iLength;
 	int selection;
+
 
     /* initialise the scoreboard */
 
@@ -52,26 +55,28 @@ int main(void)
 	switch(selection){
 		/* play a game option */
 		case 1 :
+
+            int winner;
 			printf("\e[1;1H\e[2J");
 			printf(" - %d | play game \n", selection);
 
-			play_game(&human_player, &computer_player);
+            winner = play_game(&human_player, &computer_player);
+            /* game will return the game result, with player and board */
 
-		    /* if there was not a draw, add player to the scoreboard in
-		     * order by number of tokens in play
-		     */
-             
+            add_to_scoreboard(scores, winner);
+
 			break;
 
 		/* display the scoreboard option */
 		case 2  :
-		   /* code goes here */
+		   display_scores(scores);
 		   break;
 
 		/* quit the program option */
 		case 3  :
-		   /* code goes here */
-		   break;
+            printf("%s\n", "Hope you enjoyed yo game, 'G.");
+            return EXIT_SUCCESS;
+            break;
 
 		default : /* Optional */
 			/* default code here */
