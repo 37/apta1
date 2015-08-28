@@ -19,7 +19,6 @@ enum input_result get_human_player(struct player* human)
 	int uLength;
 	int colorindex = randomnum(2);
 	int humancolor;
-	int compcolor;
 
 	/* 0 is red, 1 is white */
 	if (colorindex == 0){
