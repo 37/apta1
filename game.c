@@ -146,7 +146,7 @@ enum game_state test_for_winner(
                     rowcount = 0;
                 } else if (rowhistory == C_RED){
                     rowcount += 1;
-                    if (rowcount == 4) {
+                    if (rowcount == 3) {
                         /* 4 red found in a row */
                         return G_RED;
                     }
@@ -158,7 +158,7 @@ enum game_state test_for_winner(
                     rowcount = 0;
                 } else if (rowhistory == C_WHITE){
                     rowcount += 1;
-                    if (rowcount == 4) {
+                    if (rowcount == 3) {
                         /* 4 white found in a row */
                         return G_WHITE;
                     }
@@ -188,7 +188,7 @@ enum game_state test_for_winner(
                     colcount = 0;
                 } else if (colhistory == C_RED){
                     colcount += 1;
-                    if (colcount == 4) {
+                    if (colcount == 3) {
                         /* 4 red found in a row */
                         return G_RED;
                     }
@@ -200,7 +200,7 @@ enum game_state test_for_winner(
                     colcount = 0;
                 } else if (colhistory == C_WHITE){
                     colcount += 1;
-                    if (colcount == 4) {
+                    if (colcount == 3) {
                         /* 4 white found in a row */
                         return G_WHITE;
                     }
