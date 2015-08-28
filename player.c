@@ -36,8 +36,6 @@ enum input_result get_human_player(struct player* human)
 	human->counters = 0;
 	human->type = HUMAN;
 
-
-
     return SUCCESS;
 }
 
@@ -54,7 +52,7 @@ enum input_result get_computer_player(struct player * computer)
 	computer->counters = 0;
 	computer->type = COMPUTER;
 
-    return FAILURE;
+    return SUCCESS;
 }
 
 enum input_result take_turn(struct player * current,
@@ -107,6 +105,8 @@ enum input_result take_turn(struct player * current,
 
 	   board[count][selection] = current->thiscolor;
 
+	   return SUCCESS;
+
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
 		int count = -1;
@@ -128,6 +128,8 @@ enum input_result take_turn(struct player * current,
 		} while (count > -1);
 		/* Set the computer players action */
 		board[count][col] = current->thiscolor;
+
+		return SUCCESS;
 	}
 
 	/* End of turn */
