@@ -34,7 +34,6 @@ int randomnum(int num) {
         assert (0L < tail);
         tail *= num;
 
-
         while ((random = rand()) >= tail);
 
         return random % num;

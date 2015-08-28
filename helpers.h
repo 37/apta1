@@ -1,6 +1,6 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
+* Semester 2 2015 Assignment #1
 * Full Name        : EDIT HERE
 * Student Number   : EDIT HERE
 * Course Code      : EDIT HERE
@@ -13,13 +13,13 @@
 #include "bool.h"
 
 /**
- * @file helpers.h contains the datastructures used for various helper 
+ * @file helpers.h contains the datastructures used for various helper
  * functioons and their function prototypes
  **/
 #ifndef HELPERS_H
 #define HELPERS_H
 /**
- * the possible values that can be returned from custom input handling 
+ * the possible values that can be returned from custom input handling
  * functions
  **/
 enum input_result
@@ -44,5 +44,7 @@ enum input_result
  * function when this has happened.
  **/
 void read_rest_of_line(void);
+
+int randomnum(int num);
 
 #endif

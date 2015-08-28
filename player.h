@@ -1,6 +1,6 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
+* Semester 2 2015 Assignment #1
 * Full Name        : EDIT HERE
 * Student Number   : EDIT HERE
 * Course Code      : EDIT HERE
@@ -42,16 +42,16 @@ struct player
      **/
     char name[NAMELEN+1];
     /**
-     * the color of the token for the player. Note: this is a typedef of 
+     * the color of the token for the player. Note: this is a typedef of
      * enum @ref cell_contents.
      **/
     color thiscolor;
     /**
-     * how many counters does this player have on the board? 
+     * how many counters does this player have on the board?
      **/
     unsigned counters;
     /**
-     * what type of player is this? A human or a computer? 
+     * what type of player is this? A human or a computer?
      **/
     enum playertype type;
 };
@@ -67,8 +67,8 @@ struct player
 enum input_result get_computer_player(struct player *);
 
 /**
- * this is where the player takes a turn. If they are a computer player, 
- * insert the token in a random column. If they are a human player 
+ * this is where the player takes a turn. If they are a computer player,
+ * insert the token in a random column. If they are a human player
  * ask them which column they wish to drop a token into.
  **/
 enum input_result take_turn(struct player *, enum cell_contents[][BOARDWIDTH]);
