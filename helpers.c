@@ -1,6 +1,6 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
+* Semester 2 2015 Assignment #1
 * Full Name        : EDIT HERE
 * Student Number   : EDIT HERE
 * Course Code      : EDIT HERE
@@ -25,4 +25,18 @@ void read_rest_of_line(void)
     clearerr(stdin);
 }
 
+int randomnum(int num) {
+    if ((num - 1) == RAND_MAX) {
+        return rand();
+    } else {
+        int random;
+        long tail = RAND_MAX / num;
+        assert (0L < tail);
+        tail *= num;
 
+
+        while ((random = rand()) >= tail);
+
+        return random % num;
+    }
+}

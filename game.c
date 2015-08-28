@@ -72,7 +72,9 @@ struct player * play_game(struct player * human ,
 {
     /* declaration that allocates the board for the game */
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH];
-
+    /* If turn is set to 0 white's turn, else 1 for red. */
+    int turn = 0;
+    int game;
 	/* calls human player creation */
     get_human_player(human);
 	get_computer_player(computer);
@@ -83,52 +85,128 @@ struct player * play_game(struct player * human ,
 	initialise_board(board);
 	display_board(board);
 
-	if (human->thiscolor == C_WHITE){
-		take_turn(human, board);
-	} else {
-		take_turn(computer, board);
-	}
+    /* turn loop */
+    do {
+        if (turn = 0){ /* White turn */
+            if (human->thiscolor == C_WHITE){
+        		take_turn(human, board);
+        	} else {
+        		take_turn(computer, board);
+        	}
+        } else if (turn = 1) { /* red turn */
+            if (human->thiscolor == C_RED){
+        		take_turn(human, board);
+        	} else {
+        		take_turn(computer, board);
+        	}
+        }
 
+        game = test_for_winner(board);
+
+    } while (game == G_NO_WINNER);
+    /* Result achieved, victory or draw */
+    printf("%s\n", "Game over.");
     return NULL;
 }
 
-/**
- * In this requirement you are required to test what the game's current
- * state is.
- * Possible game states are defined by the game_state enumeration:
- * enum game_state
- * {
- *    G_NO_WINNER=-1,
- *    G_DRAW,
- *    G_RED,
- *    G_WHITE
- * };
- *
- * Most of these states should be self-explanatory but let's go through
- * their meaning.
- *
- *    &bull; G_NO_WINNER: the game is still in progress and therefore there
- *    is no winner yet.
- *
- *    &bull; G_DRAW: neither player has won the game but there are no more
- *    spaces left for a player to make a move.
- *
- *    &bull; G_RED / G_WHITE: the player whose token is the specified
- *    colour has won the game.
- *
- * Your task in this function is to iterate over the 2-dimensional array
- * (the board) looking for four in a row in any direction – if you find
- * this, return the appropriate value of either G_RED or G_WHITE.
- *
- * Next, test for a draw. If none of these cases hold, return G_NO_WINNER.
- * @param board the gameboard to test for a winner
- **/
 enum game_state test_for_winner(
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 {
-    /* default return value  - delete this comment and the return statement
-     * below and replace them with the game logic for deciding whether a
-     * game has been won and who the winner is
-     */
-    return G_NO_WINNER;
+    int emptycount = 0;
+    int row;
+    int col;
+
+    int colhistory;
+    int colcount;
+
+    char rowhistory;
+    int rowcount;
+
+    /* Iterate through horizontal ROW cell values, recording the counters */
+    for (row = 0; ((row < BOARDHEIGHT) && (rowcounter < 4)); row++) {
+        /* New row, reset counters */
+        rowcounter = 0;
+        rowhistory = 0;
+        for (col = 0; ((col < BOARDWIDTH) && (rowcounter < 4)); col++) {
+
+            if (board[row][col] = C_RED) {
+                /*current cell is red */
+                /* reset white counter */
+                if (rowhistory == C_WHITE){
+                    rowcounter = 0;
+                } else {
+                    rowcounter += 1;
+                }
+            } else if (board[row][col] = C_WHITE) {
+                /* current cell is white */
+                /* reset red counter */
+                if (rowhistory == C_RED){
+                    rowcounter = 0;
+                } else {
+                    rowcounter += 1;
+                }
+            } else if (board[row][col] = C_EMPTY){
+                rowcounter = 0;
+                emptycount += 1;
+            }
+            rowhistory = board[row][col];
+        }
+
+        /* if horizontal victory */
+        if (rowcounter > 3) {
+            if (rowhistory == C_RED) {
+                return G_RED;
+            } else if (rowhistory == C_WHITE) {
+                return G_WHITE;
+            }
+        }
+    }
+
+    /* Iterate through vertical COLUMN cell values, recording the counters */
+
+    for (col = 0; ((col < BOARDWIDTH) && (colcounter < 4)); col++) {
+        /* New row, reset counters */
+        rowcounter = 0;
+        rowhistory = 0;
+        for (row = 0; ((row < BOARDHEIGHT) && (colcounter < 4)); row++) {
+
+            if (board[row][col] = C_RED) {
+                /*current cell is red */
+                /* reset white counter */
+                if (colhistory == C_WHITE){
+                    colcounter = 0;
+                } else {
+                    colcounter += 1;
+                }
+            } else if (board[row][col] = C_WHITE) {
+                /* current cell is white */
+                /* reset red counter */
+                if (colhistory == C_RED){
+                    colcounter = 0;
+                } else {
+                    colcounter += 1;
+                }
+            } else if (board[row][col] = C_EMPTY) {
+                colcounter = 0;
+                emptycount += 1;
+            }
+            colhistory = board[row][col];
+        }
+
+        /* if horizontal victory */
+        if (colcounter > 3) {
+            if (colhistory == C_RED) {
+                return G_RED;
+            } else if (colhistory == C_WHITE) {
+                return G_WHITE;
+            }
+        }
+    }
+
+    if (emptycount == 0) {
+        return G_DRAW;
+    } else {
+        return G_NO_WINNER;
+    }
+
 }

@@ -57,26 +57,6 @@ enum input_result get_computer_player(struct player * computer)
     return FAILURE;
 }
 
-/**
- * In this requirement, you need to handle the taking of a turn - either
- * of a human or a computer player.
- *
- * For the human player, you will need to allow the user to enter the
- * column they wish to place a token in. You will need to validate what
- * the user enters, then place a token correctly in that column so that
- * it occupies the cell closest to the bottom of the board array for that
- * column.
- *
- * For the computer player, you will need to randomly generate a column
- * number to place a token in and if that column is full, generate a
- * different column number until a column number with some free space has
- * been found.
- *
- * @param current the current player
- * @param board the game board that we will attempt to insert a token into
- * @return enum @ref input_result indicating the state of user input (in
- * case this run involved user input
- **/
 enum input_result take_turn(struct player * current,
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH])
 {
@@ -87,7 +67,7 @@ enum input_result take_turn(struct player * current,
 		int selection;
 		int iLength;
 		int count = -1;
-		int col;
+		int row;
 
 		/* Collect line input details from user */
 		do {
@@ -111,36 +91,45 @@ enum input_result take_turn(struct player * current,
 
 				printf("You selected: %d\n", selection);
 
-			} while ( (0 < selection) && (selection < 8) );
+			} while ( (1 > selection) || (selection > 7) );
 
 
-    		for (col = 0; col < 6; col++){
-    			if (board[col][selection] == C_EMPTY) {
+    		for (row = 0; row < 6; row++){
+    			if (board[row][selection] == C_EMPTY) {
     				count = count + 1;
     			}
     		}
 
-	   } while(count < 0);
+	   } while(count < -1);
 
 	   /* Valid move selected */
-	   printf("%s\n", "This is a valid move");
-	   printf("Column %d\n", selection);
-	   printf("Row %d\n", count);
-	   printf("this color:  %d\n", current->thiscolor);
+	   printf("%s\n", "This is a valid move.");
 
 	   board[count][selection] = current->thiscolor;
 
 	} else if (current->type == COMPUTER){
 		/* generate random number.*/
+		falsetrue success = FALSE;
+		int count = -1;
+		int row;
+		int col;
+
 		printf("%s\n", "It's the computers turn.");
+		/* returns a random number between 1 & 7 */
+
+		/* select random column, test all rows to ensure it's valid */
+		do {
+			col = randomnum(7);
+			for (row = 0; row < 6; row++){
+    			if (board[row][col] == C_EMPTY) {
+    				count = count + 1;
+    			}
+    		}
+
+		} while (count > -1);
+		/* Set the computer players action */
+		board[count][col] = current->thiscolor;
 	}
 
-	/*  call gamestate. */
-
-	/*
-     * Default return value - delete this comment and the return
-     * value and replace it with appropriate logic to handle either
-     * a human or computer turn including handling any input errors.
-     */
-    return FAILURE;
+	/* End of turn */
 }
