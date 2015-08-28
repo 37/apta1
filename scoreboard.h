@@ -1,10 +1,10 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Semester 2 2015 Assignment #1
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include "player.h"
@@ -23,11 +23,11 @@
  **/
 #define SCOREBOARDSIZE 10
 /**
- * redefine an array of player structs to be a scoreboard type. 
+ * redefine an array of player structs to be a scoreboard type.
  **/
 typedef struct player scoreboard[SCOREBOARDSIZE];
 /**
- * alias the player struct to also be a score as that is what it is for the 
+ * alias the player struct to also be a score as that is what it is for the
  * scoreboard
  **/
 typedef struct player score;

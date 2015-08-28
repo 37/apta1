@@ -1,16 +1,19 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
 * Semester 2 2015 Assignment #1
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include "con4.h"
 
 int main(void)
 {
+    /* clear console */
+    printf("\e[1;1H\e[2J");
+
     /* the scoreboard for keeping track of winners */
     scoreboard scores;
     init_scoreboard(scores);
@@ -29,7 +32,8 @@ int main(void)
 
     do {
         /*display menu and get menu choice until the user chooses to quit */
-    	printf("\e[1;1H\e[2J\n%s\n%s\n%s\n%s\n%s\n%s\n",
+
+    	printf("\n%s\n%s\n%s\n%s\n%s\n%s\n",
     			"Welcome to Connect 4",
     			"--------------------",
     			"1. Play Game",

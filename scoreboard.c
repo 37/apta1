@@ -1,10 +1,10 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
 * Semester 2 2015 Assignment #1
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include "scoreboard.h"
@@ -26,7 +26,8 @@ void init_scoreboard(scoreboard board) {
 void display_scores(const scoreboard board) {
     /* display score code goes here */
     int count;
-    printf("\e[1;1H\e[2J%s\n%s\n%s\n",
+    printf("\e[1;1H\e[2J");
+    printf("%s\n%s\n%s\n",
         "---------------------------------------------",
         "Player               |Score                  ",
         "---------------------------------------------"

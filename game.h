@@ -1,10 +1,10 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Semester 2 2015 Assignment #1
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include <stdlib.h>
@@ -38,15 +38,14 @@ enum game_state
 
 /**
  * Manages the game loop. See the documentation in the .c file for full
- * details. 
+ * details.
   **/
 struct player * play_game(struct player *, struct player*);
 
 /**
- * tests to see if the game has been won. A win is defined as four 
- * tokens in a row in any direction, however you should not wrap 
+ * tests to see if the game has been won. A win is defined as four
+ * tokens in a row in any direction, however you should not wrap
  * around the board.
  **/
 enum game_state test_for_winner(
         enum cell_contents board[BOARDHEIGHT][BOARDWIDTH]);
-

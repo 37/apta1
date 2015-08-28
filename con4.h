@@ -1,10 +1,10 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
-* Semester 2 2015 Assignment #1 
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Semester 2 2015 Assignment #1
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include <stdio.h>
@@ -16,6 +16,6 @@
 #include "game.h"
 #include "bool.h"
 /**
- * @file con4.h simply puts together all the other header files for 
+ * @file con4.h simply puts together all the other header files for
  * inclusion in @ref con4.c
  **/

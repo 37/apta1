@@ -1,10 +1,10 @@
 /***********************************************************************
 * COSC1076 - Advanced Programming Techniques
 * Semester 2 2015 Assignment #1
-* Full Name        : EDIT HERE
-* Student Number   : EDIT HERE
-* Course Code      : EDIT HERE
-* Program Code     : EDIT HERE
+* Full Name        : Keaton Okkonen
+* Student Number   : s3432651
+* Course Code      : COSC1076
+* Program Code     : BP094
 * Start up code provided by Paul Miller
 ***********************************************************************/
 #include "player.h"
@@ -118,7 +118,7 @@ enum input_result take_turn(struct player * current,
 	   printf("%s\n", "This is a valid move.");
 	   current->counters += 1;
 	   board[count][selection] = current->thiscolor;
-
+	   return SUCCESS;
 
 	} else if (current->type == COMPUTER){
 
@@ -152,10 +152,11 @@ enum input_result take_turn(struct player * current,
 		/* Set the computer players action */
 		current->counters += 1;
 		board[count][col] = current->thiscolor;
+		return SUCCESS;
 
 	}
 
-	return SUCCESS;
+	return FAILURE;
 
 	/* End of turn */
 }
