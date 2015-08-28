@@ -16,7 +16,7 @@ struct player * play_game(struct player * human ,
     enum cell_contents board[BOARDHEIGHT][BOARDWIDTH];
     /* If turn is set to 0 white's turn, else 1 for red. */
     int turn = 0;
-    enum game_state game = G_NO_WINNER;
+    enum game_state game;
 	/* calls human player creation */
     get_human_player(human);
 	get_computer_player(computer);
